@@ -15,6 +15,38 @@ class MyApp extends StatelessWidget {
       title: 'GreenHouse',
       theme: ThemeData(
         // Define the default brightness and colors.
+        brightness: Brightness.light,
+        primaryColor: Color.fromRGBO(132, 217, 218, 1),
+        secondaryHeaderColor: Color.fromRGBO(121, 213, 141, 1),
+        cardColor: Color.fromRGBO(48,54,54,1),
+        backgroundColor: const Color.fromRGBO(244,248,255,1),
+        // Define the default font family.
+        fontFamily: 'Georgia',
+
+        // Define the default `TextTheme`. Use this to specify the default
+        // text styling for headlines, titles, bodies of text, and more.
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(fontSize: 45.0, fontWeight: FontWeight.bold),
+          titleLarge: TextStyle(
+              fontSize: 30.0,
+              color: Color.fromRGBO(101,108,116,1),
+              fontWeight: FontWeight.bold,
+          ),
+          bodySmall: TextStyle(fontSize: 22.0),
+          bodyMedium: TextStyle(
+              fontSize: 20.0,
+              color: Color.fromRGBO(253, 255, 255, 0.4),
+              fontWeight: FontWeight.bold
+          ),
+          bodyLarge: TextStyle(
+              fontSize: 20.0,
+              color: Color.fromRGBO(253, 255, 255, 1),
+              fontWeight: FontWeight.bold
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        // Define the default brightness and colors.
         brightness: Brightness.dark,
         primaryColor: Color.fromRGBO(132, 217, 218, 1),
         secondaryHeaderColor: Color.fromRGBO(121, 213, 141, 1),
@@ -26,25 +58,26 @@ class MyApp extends StatelessWidget {
         // Define the default `TextTheme`. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: const TextTheme(
-          displayLarge: TextStyle(fontSize: 65.0, fontWeight: FontWeight.bold),
+          displayLarge: TextStyle(fontSize: 45.0, fontWeight: FontWeight.bold),
           titleLarge: TextStyle(
-              fontSize: 55.0,
-              color: Color.fromRGBO(253, 255, 255,1),
-              fontWeight: FontWeight.bold,
+            fontSize: 30.0,
+            color: Color.fromRGBO(253, 255, 255,1),
+            fontWeight: FontWeight.bold,
           ),
-          bodySmall: TextStyle(fontSize: 28.0),
+          bodySmall: TextStyle(fontSize: 22.0),
           bodyMedium: TextStyle(
-              fontSize: 30.0,
+              fontSize: 20.0,
               color: Color.fromRGBO(253, 255, 255, 0.4),
               fontWeight: FontWeight.bold
           ),
           bodyLarge: TextStyle(
-              fontSize: 40.0,
+              fontSize: 20.0,
               color: Color.fromRGBO(253, 255, 255, 1),
               fontWeight: FontWeight.bold
           ),
         ),
       ),
+      themeMode: ThemeMode.dark,
       home: const HomePage(),
     );
   }
