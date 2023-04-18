@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:greenhouse/widgets/AutoWaterButton.dart';
+
+import '../widgets/WaterPlantButton.dart';
 
 class YourPlant extends StatefulWidget {
-  const YourPlant({Key? key}) : super(key: key);
+  final int id;
+
+  const YourPlant({Key? key, required this.id}) : super(key: key);
 
   @override
   State<YourPlant> createState() => _YourPlantState();
@@ -11,14 +16,58 @@ class YourPlant extends StatefulWidget {
 class _YourPlantState extends State<YourPlant> {
   @override
   Widget build(BuildContext context) {
+
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          elevation: 0,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight * 1.2),
+          child: AppBar(
+            backgroundColor: Theme.of(context).backgroundColor,
+            elevation: 1,
+            title: Text(
+              widget.id.toString(),
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: screenWidth * 0.07),
+            ),
+            centerTitle: true,
+          ),
         ),
-      body: Container(
-
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          bottom: screenHeight * 0.1,
+                          top: screenHeight * 0.09,
+                        ),
+                        child: Container(
+                          child: Icon(
+                              Icons.ac_unit,
+                            size: screenHeight * 0.4,
+                            color: Theme.of(context).secondaryHeaderColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        WaterPlantButton(),
+                        AutoWaterButton(),
+                      ],
+                    ),
+                  ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
